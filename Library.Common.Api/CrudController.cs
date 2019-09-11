@@ -49,12 +49,17 @@ namespace Library.Common.Api
 
         [HttpGet]
         [Route("{id}")]
-        public virtual ReadDto Get([FromRoute]string id)
+        public virtual IActionResult Get([FromRoute]string id)
         {
             var entity = _crudService.Get(c => c.Id == id).FirstOrDefault();
             var dto = _mapper.Map<TEntity, ReadDto>(entity);
 
-            return dto;
+            if (dto == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(dto);
         }
 
         [HttpGet]

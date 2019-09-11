@@ -21,6 +21,7 @@ using AutoMapper;
 using Library.Common.Api;
 using Library.Interfaces.Services;
 using Library.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace Library.Api
 {
@@ -50,20 +51,28 @@ namespace Library.Api
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
             {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
+                app.UseExceptionHandler(appBuilder =>
+                {
+                    appBuilder.Run(async context => {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("Unexpected error occured. Please try again later.");
+                    });
+                });
+
                 //app.UseHsts();
             }
 
             //app.UseHttpsRedirection();
 
-            app.UseOpenApi(); // serve OpenAPI/Swagger documents
-            app.UseSwaggerUi3(); // serve Swagger UI
-            app.UseReDoc(); // serve ReDoc UI
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+            app.UseReDoc();
 
             app.UseMvc();
         }
