@@ -16,7 +16,7 @@ namespace ProjectManagementTool
         {
             Console.WriteLine("Press any key to use this dark power...");
             Console.ReadKey();
-            SyncronizeEntities(@"C:\Users\User\Source\Repos\template");
+            SyncronizeEntities(@"C:\Users\User\Desktop\Library");
         }
 
         private static void SyncronizeEntities(string projectPath)

@@ -10,6 +10,12 @@ namespace Library.Common.Api
     {
         public static IServiceCollection RegisterServicesAndRepositorys(this IServiceCollection services)
         {
+			services.AddScoped<IAuthorService, AuthorService>();
+			services.AddScoped<IAuthorRepository, AuthorRepository>();
+
+			services.AddScoped<IBookService, BookService>();
+			services.AddScoped<IBookRepository, BookRepository>();
+
 			return services;
         }
     }

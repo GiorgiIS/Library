@@ -38,7 +38,7 @@ namespace Library.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var connectionString = Configuration["ConnectionStrings:Default"];
-            services.AddDbContext<CustomDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<LibraryDbContext>(options => options.UseSqlServer(connectionString));
 
             var assemblies = typeof(AutomapperProfile).Assembly;
             services.AddAutoMapper(assemblies);

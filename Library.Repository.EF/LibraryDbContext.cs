@@ -6,9 +6,13 @@ using System.Text;
 
 namespace Library.Repository.EF
 {
-    public class CustomDbContext : DbContext
+    public class LibraryDbContext : DbContext
     {
-        public CustomDbContext(DbContextOptions<CustomDbContext> options) : base(options) { }
+        public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options) { }
+
+		public DbSet<Author> Authors { get; set; } 
+
+		public DbSet<Book> Books { get; set; } 
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -13,8 +13,8 @@ namespace Library.Repository.Implementations
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : EntityBase
     {
-        private readonly CustomDbContext _context;
-        public RepositoryBase(CustomDbContext context)
+        private readonly LibraryDbContext _context;
+        public RepositoryBase(LibraryDbContext context)
         {
             _context = context;
         }
