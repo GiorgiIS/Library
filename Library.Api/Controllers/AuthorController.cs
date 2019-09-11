@@ -29,9 +29,16 @@ namespace Library.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetAuthors(Guid id)
+        public IActionResult GetAuthorById(Guid id)
         {
-            return Ok(_libraryService.GetAuthorById(id));
+            var author = _libraryService.GetAuthorById(id);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(author);
         }
     }
 }
