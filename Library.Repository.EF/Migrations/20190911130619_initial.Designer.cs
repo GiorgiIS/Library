@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Repository.EF.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20190911104340_initial")]
+    [Migration("20190911130619_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace Library.Repository.EF.Migrations
 
             modelBuilder.Entity("Library.Core.Entities.Author", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime?>("CreatedAt");
@@ -47,12 +47,10 @@ namespace Library.Repository.EF.Migrations
 
             modelBuilder.Entity("Library.Core.Entities.Book", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("AuthorId");
-
-                    b.Property<string>("AuthorId1");
 
                     b.Property<DateTime?>("CreatedAt");
 
@@ -66,7 +64,7 @@ namespace Library.Repository.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
                 });
@@ -75,7 +73,8 @@ namespace Library.Repository.EF.Migrations
                 {
                     b.HasOne("Library.Core.Entities.Author", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId1");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

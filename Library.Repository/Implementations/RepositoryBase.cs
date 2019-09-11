@@ -29,7 +29,7 @@ namespace Library.Repository.Implementations
             return _context.Set<T>().Where(expression).AsNoTracking();
         }
 
-        public string Create(T entity)
+        public Guid Create(T entity)
         {
             var res = _context.Set<T>().Add(entity);
             return res.Entity.Id;
@@ -48,7 +48,7 @@ namespace Library.Repository.Implementations
             var res = _context.Set<T>().Update(entity);
         }
 
-        public void Delete(string id)
+        public void Delete(Guid id)
         {
             var entity = Get(c => c.Id == id).FirstOrDefault();
             entity.DeletedAt = DateTimeHelper.DateTimeNow();
@@ -58,6 +58,11 @@ namespace Library.Repository.Implementations
         public int SaveChanges()
         {
             return _context.SaveChanges();
+        }
+
+        public T GetById(Guid id)
+        {
+            return _context.Set<T>().Find(id);
         }
     }
 }

@@ -10,11 +10,12 @@ namespace Library.Repository.Interfaces
     public interface IRepositoryBase<T> where T : EntityBase
     {
         IQueryable<T> GetAll();
+        T GetById(Guid id);
         IQueryable<T> Get(Expression<Func<T, bool>> expression);
-        string Create(T entity);
+        Guid Create(T entity);
         void Update(T entity);
         void Delete(T entity);
-        void Delete(string id);
+        void Delete(Guid id);
         int SaveChanges();
     }
 }

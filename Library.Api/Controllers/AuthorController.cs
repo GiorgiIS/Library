@@ -8,17 +8,30 @@ using Library.Services.Dtos.AuthorDtos;
 using System.Collections;
 using Library.Services.Dtos.BookDtos;
 using Library.Application;
+using System;
 
 namespace Library.Api.Controllers
 {
     [Route("api/authors")]
     [ApiController]
-    public class AuthorController 
+    public class AuthorsController : Controller
     {
-        private readonly ILibraryService libraryService;
-        public AuthorController(ILibraryService libraryService, IMapper mapper) {
-
+        private readonly ILibraryService _libraryService;
+        public AuthorsController(ILibraryService libraryService)
+        {
+            _libraryService = libraryService;
         }
 
+        [HttpGet]
+        public IActionResult GetAuthors()
+        {
+            return Ok(_libraryService.GetAuthors());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetAuthors(Guid id)
+        {
+            return Ok(_libraryService.GetAuthorById(id));
+        }
     }
 }

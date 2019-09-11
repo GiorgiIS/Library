@@ -9,6 +9,7 @@ using System.Reflection;
 using Library.Common;
 using Library.Services.Dtos.BookDtos;
 using AutoMapper;
+using Library.Services.Dtos.AuthorDtos;
 
 namespace Library.Application
 {
@@ -24,8 +25,16 @@ namespace Library.Application
             _authorRepository = authorRepository;
             _mapper = mapper;
         }
-      
 
+        public List<AuthorReadDto> GetAuthors()
+        {
+            var authors = _authorRepository.GetAll();
+            return _mapper.Map<List<AuthorReadDto>>(authors.ToList());
+        }
 
+        public AuthorReadDto GetAuthorById(Guid id)
+        {
+            return _mapper.Map<AuthorReadDto>(_authorRepository.GetById(id));
+        }
     }
 }
