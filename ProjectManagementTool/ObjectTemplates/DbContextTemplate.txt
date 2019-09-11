@@ -1,1 +1,0 @@
-﻿This template has no use, instead of it real dbContext is got and replaced dbsets only. Configuring entities should be done manual.

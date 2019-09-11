@@ -1,1 +1,0 @@
-﻿This template has no use, instead of it real ConfigureServiceHelper is got and replaced.

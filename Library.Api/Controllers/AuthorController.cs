@@ -5,13 +5,20 @@ using Library.Common.Api.RequestModels;
 using Library.Core.Entities;
 using Library.Interfaces.Services;
 using Library.Services.Dtos.AuthorDtos;
+using System.Collections;
+using Library.Services.Dtos.BookDtos;
+using Library.Application;
 
 namespace Library.Api.Controllers
 {
-    [Route("Api/Author")]
+    [Route("api/authors")]
     [ApiController]
-    public class AuthorController : CrudController<Author, AuthorReadDto, AuthorCreateDto, AuthorUpdateDto, AuthorSearchQuery, IAuthorService>
+    public class AuthorController 
     {
-        public AuthorController(IAuthorService service, IMapper mapper) : base(service, mapper) { }
+        private readonly ILibraryService libraryService;
+        public AuthorController(ILibraryService libraryService, IMapper mapper) {
+
+        }
+
     }
 }
