@@ -64,5 +64,10 @@ namespace Library.Repository.Implementations
         {
             return _context.Set<T>().Find(id);
         }
+
+        public bool Exists(Guid id)
+        {
+            return _context.Set<T>().Count(c => c.Id == id) == 1;
+        }
     }
 }

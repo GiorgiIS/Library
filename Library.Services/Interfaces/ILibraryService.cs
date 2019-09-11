@@ -13,5 +13,8 @@ namespace Library.Interfaces.Services
     {
         List<AuthorReadDto> GetAuthors();
         AuthorReadDto GetAuthorById(Guid id);
+        bool AuthorExists(Guid authorId);
+        List<BookReadDto> GetBooksByAuthorId(Guid authorId);
+        BookReadDto GetBookByAuthorAndBookId(Guid authorId, Guid id);
     }
 }

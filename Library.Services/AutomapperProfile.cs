@@ -1,8 +1,6 @@
 using AutoMapper;
 using Library.Core.Entities;
 using Library.Services.Dtos.AuthorDtos;
-using Library.Services.Dtos.AuthorDtos;
-using Library.Services.Dtos.BookDtos;
 using Library.Services.Dtos.BookDtos;
 
 namespace Library.Services

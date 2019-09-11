@@ -11,6 +11,7 @@ namespace Library.Repository.Interfaces
     {
         IQueryable<T> GetAll();
         T GetById(Guid id);
+        bool Exists(Guid id);
         IQueryable<T> Get(Expression<Func<T, bool>> expression);
         Guid Create(T entity);
         void Update(T entity);
